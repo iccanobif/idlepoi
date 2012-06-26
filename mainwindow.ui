@@ -27,6 +27,9 @@
    </layout>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -42,20 +45,20 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actSwitchKeepaliveMode"/>
-   <addaction name="actOptions"/>
+   <addaction name="actKeepalive"/>
   </widget>
-  <action name="actSwitchKeepaliveMode">
+  <action name="actKeepalive">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="text">
-    <string>Keepalive mode</string>
+   <property name="enabled">
+    <bool>true</bool>
    </property>
-  </action>
-  <action name="actOptions">
    <property name="text">
-    <string>Options</string>
+    <string>Start keepalive</string>
+   </property>
+   <property name="toolTip">
+    <string>Start keepalive</string>
    </property>
   </action>
  </widget>

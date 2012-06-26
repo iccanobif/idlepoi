@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -17,13 +18,14 @@ public:
     
 private:
     Ui::MainWindow *ui;
+    QTimer* timer;
     void clickInPage(int x, int y);
     void sendMessage(const QString& msg);
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
 
 private slots:
-    void showConfiguration();
-    void switchKeepaliveMode(bool enable);
+    void switchKeepalive(bool b);
+    void doKeepalive();
 };
 
 #endif // MAINWINDOW_H
