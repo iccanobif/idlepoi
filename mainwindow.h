@@ -26,6 +26,7 @@ private:
 private slots:
     void switchKeepalive(bool b);
     void doKeepalive();
+    void togliBlank(bool ok);
 };
 
 #endif // MAINWINDOW_H

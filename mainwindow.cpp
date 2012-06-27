@@ -4,19 +4,22 @@
 #include <QMouseEvent>
 #include <QDebug>
 #include <QInputDialog>
-#include <QWebFrame>
+#include <QtWebKit>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
-    ui->webView->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
-    ui->webView->setUrl(QUrl("http://l4cs.jpn.org/gikopoi/flash/gikopoi134_for/flash_gikopoi.html"));
     timer = new QTimer();
 
+    ui->setupUi(this);
+
     connect(ui->actKeepalive, SIGNAL(toggled(bool)), this, SLOT(switchKeepalive(bool)));
+    connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
+
+    ui->webView->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    ui->webView->setUrl(QUrl("http://l4cs.jpn.org/gikopoi/"));
 }
 
 void MainWindow::doKeepalive()
@@ -73,6 +76,21 @@ void MainWindow::switchKeepalive(bool b)
         timer->stop();
     }
 }
+
+void MainWindow::togliBlank(bool ok) {
+    if (!ok) {
+        return;
+    }
+
+    QWebFrame* frame = ui->webView->page()->mainFrame();
+    if (frame!=NULL) {
+        QWebElementCollection collection = frame->findAllElements("a[target=_blank]");
+        foreach (QWebElement element, collection) {
+            element.setAttribute("target", "_self");
+        }
+    }
+}
+
 
 MainWindow::~MainWindow()
 {
