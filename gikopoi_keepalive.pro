@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkit
+QT       += core gui webkit network
 
 TARGET = gikopoi_keepalive
 TEMPLATE = app
