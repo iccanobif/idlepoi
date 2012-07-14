@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QtWebKit>
-#include <QDesktopServices>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,23 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer = new QTimer();
 
-    diskCache = new QNetworkDiskCache();
-    diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + "/gikopoiClientCache");
-
-    accessManager = new QNetworkAccessManager();
-    accessManager->setCache(diskCache);
-
-    networkRequest = new QNetworkRequest();
-    networkRequest->setUrl(QUrl("http://l4cs.jpn.org/gikopoi/"));
-
     connect(ui->btnToggleKeepalive, SIGNAL(toggled(bool)), this, SLOT(toggleKeepalive(bool)));
     connect(ui->btnToggleAfk, SIGNAL(toggled(bool)), this, SLOT(toggleAfk(bool)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
 
-    ui->webView->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
-    ui->webView->page()->setNetworkAccessManager(accessManager);
-    ui->webView->load(*networkRequest);
+    ui->webView->setPage(new GikopoiWebPage());
 }
 
 void MainWindow::doKeepalive()
@@ -64,13 +53,13 @@ void MainWindow::toggleKeepalive(bool b)
 
     if (b)
     {
-        ui->actKeepalive->setText("Stop keepalive");
+        ui->btnToggleKeepalive->setText("Stop keepalive");
         timer->setInterval(10 * 60 * 1000); //10 minutes
         timer->start();
     }
     else
     {
-        ui->actKeepalive->setText("Start keepalive");
+        ui->btnToggleKeepalive->setText("Start keepalive");
         timer->stop();
     }
 }

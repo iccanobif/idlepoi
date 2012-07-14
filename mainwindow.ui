@@ -72,7 +72,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0" rowspan="2">
+    <item row="1" column="0">
      <widget class="QWebView" name="webView">
       <property name="url">
        <url>
@@ -84,28 +84,6 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actKeepalive">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Start keepalive</string>
-   </property>
-   <property name="toolTip">
-    <string>Start keepalive</string>
-   </property>
-  </action>
-  <action name="actAfk">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>afk</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

@@ -3,9 +3,8 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QNetworkDiskCache>
-#include <QNetworkAccessManager>
 #include <QtGui>
+#include "gikopoiwebpage.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,9 +21,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QTimer* timer;
-    QNetworkDiskCache* diskCache;
-    QNetworkAccessManager* accessManager;
-    QNetworkRequest* networkRequest;
+
     void clickInPage(int x, int y);
     void sendMessage(const QString& msg);
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
