@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     diskCache = new QNetworkDiskCache();
     diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + "/gikopoiClientCache");
-    qDebug() << diskCache->cacheDirectory();
 
     accessManager = new QNetworkAccessManager();
     accessManager->setCache(diskCache);
@@ -25,7 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     networkRequest = new QNetworkRequest();
     networkRequest->setUrl(QUrl("http://l4cs.jpn.org/gikopoi/"));
 
-    connect(ui->actKeepalive, SIGNAL(toggled(bool)), this, SLOT(switchKeepalive(bool)));
+    connect(ui->btnToggleKeepalive, SIGNAL(toggled(bool)), this, SLOT(toggleKeepalive(bool)));
+    connect(ui->btnToggleAfk, SIGNAL(toggled(bool)), this, SLOT(toggleAfk(bool)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
 
@@ -36,7 +36,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::doKeepalive()
 {
-    sendMessage("");
+    if (ui->btnToggleAfk->isChecked())
+        sendMessage(ui->txtAfkMessage->text());
+    else
+        sendMessage("");
 }
 
 void MainWindow::sendMessage(const QString& msg)
@@ -45,8 +48,20 @@ void MainWindow::sendMessage(const QString& msg)
     frame->evaluateJavaScript(QString("DocumentGetElementFromName('gikopoi').JSCallBackSendMessage('%1');").arg(msg));
 }
 
-void MainWindow::switchKeepalive(bool b)
+void MainWindow::toggleAfk(bool b)
 {
+    ui->btnToggleKeepalive->setEnabled(!b);
+
+    if (b)
+        sendMessage(ui->txtAfkMessage->text());
+    else
+        sendMessage("");
+}
+
+void MainWindow::toggleKeepalive(bool b)
+{
+    ui->btnToggleAfk->setEnabled(b);
+
     if (b)
     {
         ui->actKeepalive->setText("Stop keepalive");
@@ -74,6 +89,10 @@ void MainWindow::togliBlank(bool ok) {
     }
 }
 
+//void linkClicked(const QString& url)
+//{
+//    QMessageBox::information(ui, "lol", url);
+//}
 
 MainWindow::~MainWindow()
 {

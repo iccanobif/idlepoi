@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QNetworkDiskCache>
 #include <QNetworkAccessManager>
+#include <QtGui>
 
 namespace Ui {
 class MainWindow;
@@ -29,7 +30,8 @@ private:
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
 
 private slots:
-    void switchKeepalive(bool b);
+    void toggleKeepalive(bool b);
+    void toggleAfk(bool b);
     void doKeepalive();
     void togliBlank(bool ok);
 };
