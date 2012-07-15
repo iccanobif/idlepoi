@@ -55,6 +55,9 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="text">
+         <string>afk</string>
+        </property>
        </widget>
       </item>
       <item>
