@@ -23,16 +23,15 @@ private:
     QTimer* timer;
 
     void clickInPage(int x, int y);
-    void sendMessage(const QString& msg);
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
 
 private slots:
+    void sendMessage(const QString& msg);
     void toggleKeepalive(bool b);
     void toggleAfk(bool b);
     void doKeepalive();
     void togliBlank(bool ok);
     void btnRefreshClicked();
-//    void checkMessageMaxLength();
 };
 
 #endif // MAINWINDOW_H

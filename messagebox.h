@@ -2,9 +2,6 @@
 #define MESSAGEBOX_H
 
 #include <QPlainTextEdit>
-//#include <QWidget>
-//#include <QKeyEvent>
-//#include <QString>
 
 class MessageBox : public QPlainTextEdit
 {
@@ -13,13 +10,11 @@ class MessageBox : public QPlainTextEdit
 public:
      MessageBox(QWidget *parent = 0);
 
-//     MessageBox(const QString& text, QWidget* parent = 0);
-
 protected:
     void keyPressEvent(QKeyEvent *e);
 
-//signals:
-//    void messageToSend(QString);
+signals:
+    void messageToSend(QString);
 };
 
 #endif // MESSAGEBOX_H

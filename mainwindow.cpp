@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnToggleAfk, SIGNAL(toggled(bool)), this, SLOT(toggleAfk(bool)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
-//    connect(ui->txtMessageInput, SIGNAL(textChanged()), this, SLOT(checkMessageMaxLength()));
+    connect(ui->txtMessageInput,SIGNAL(messageToSend(QString)), this, SLOT(sendMessage(QString)));
 
     ui->webView->setPage(new GikopoiWebPage());
 
@@ -37,6 +37,7 @@ void MainWindow::doKeepalive()
 
 void MainWindow::sendMessage(const QString& msg)
 {
+    qDebug() << "Sending message " << msg;
     QWebFrame* frame = ui->webView->page()->mainFrame();
     frame->evaluateJavaScript(QString("DocumentGetElementFromName('gikopoi').JSCallBackSendMessage('%1');").arg(msg));
 }
@@ -92,13 +93,3 @@ void MainWindow::btnRefreshClicked()
     ui->webView->setPage(new GikopoiWebPage());
 }
 
-//void MainWindow::checkMessageMaxLength()
-//{
-//    if (ui->txtMessageInput->toPlainText().length() > 500)
-//    {
-//        QString tmp = ui->txtMessageInput->toPlainText();
-//        tmp.truncate(500);
-//        ui->txtMessageInput->setPlainText(tmp);
-//        ui->txtMessageInput->moveCursor(QTextCursor::EndOfBlock, QTextCursor::MoveAnchor);
-//    }
-//}

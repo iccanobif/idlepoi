@@ -8,9 +8,9 @@ MessageBox::MessageBox(QWidget* parent) : QPlainTextEdit(parent)
 
 void MessageBox::keyPressEvent(QKeyEvent *e)
 {
-    if (e->key() == Qt::Key_Return)
+    if (e->key() == Qt::Key_Return || e->key() == Qt::Key_Enter)
     {
-//        emit messageToSend(toPlainText());
+        emit messageToSend(toPlainText());
         setPlainText("");
         return;
     }
@@ -20,16 +20,11 @@ void MessageBox::keyPressEvent(QKeyEvent *e)
 
     QPlainTextEdit::keyPressEvent(e);
 
-    if (this->toPlainText().length() > 10)
+    if (this->toPlainText().length() > 500)
     {
         setPlainText(oldString);
-//        moveCursor(QTextCursor::MoveOperation);
         QTextCursor cur = textCursor();
         cur.setPosition(oldCursorPosition);
         setTextCursor(cur);
-
-//        setTextCursor();
     }
-
-
 }
