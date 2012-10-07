@@ -1,3 +1,6 @@
 *.user
 *.user.*
 *.autosave
+debug
+release
+Makefile*
