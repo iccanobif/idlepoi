@@ -22,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
     connect(ui->txtMessageInput,SIGNAL(messageToSend(QString)), this, SLOT(sendMessage(QString)));
 
+    ui->btnRefresh->hide();
+    ui->btnToggleKeepalive->hide();
+
     ui->webView->setPage(new GikopoiWebPage());
 
     toggleKeepalive(true);
