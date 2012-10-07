@@ -6,16 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>917</width>
-    <height>760</height>
+    <width>953</width>
+    <height>738</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Gikopoi</string>
+   <string>idlepoi</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
+     <widget class="QWebView" name="webView">
+      <property name="minimumSize">
+       <size>
+        <width>680</width>
+        <height>620</height>
+       </size>
+      </property>
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="MessageBox" name="txtMessageInput"/>
+    </item>
+    <item row="0" column="0" colspan="2">
      <layout class="QHBoxLayout">
       <item>
        <widget class="QPushButton" name="btnToggleKeepalive">
@@ -23,6 +41,9 @@
          <string>Start keepalive</string>
         </property>
         <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
@@ -73,16 +94,14 @@
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QPushButton" name="btnRefresh">
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
      </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QWebView" name="webView">
-      <property name="url">
-       <url>
-        <string>about:blank</string>
-       </url>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
@@ -94,6 +113,11 @@
    <class>QWebView</class>
    <extends>QWidget</extends>
    <header>QtWebKit/QWebView</header>
+  </customwidget>
+  <customwidget>
+   <class>MessageBox</class>
+   <extends>QPlainTextEdit</extends>
+   <header location="global">messagebox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

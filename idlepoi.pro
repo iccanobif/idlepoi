@@ -6,15 +6,18 @@
 
 QT       += core gui webkit network
 
-TARGET = gikopoi_keepalive
+TARGET = idlepoi
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    gikopoiwebpage.cpp
+    gikopoiwebpage.cpp \
+    messagebox.cpp
 
 HEADERS  += mainwindow.h \
-    gikopoiwebpage.h
+    gikopoiwebpage.h \
+    messagebox.h
 
 FORMS    += mainwindow.ui
+

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QtWebKit>
+#include <windows.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,8 +20,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnToggleAfk, SIGNAL(toggled(bool)), this, SLOT(toggleAfk(bool)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
+//    connect(ui->txtMessageInput, SIGNAL(textChanged()), this, SLOT(checkMessageMaxLength()));
 
     ui->webView->setPage(new GikopoiWebPage());
+
+    toggleKeepalive(true);
 }
 
 void MainWindow::doKeepalive()
@@ -78,12 +82,23 @@ void MainWindow::togliBlank(bool ok) {
     }
 }
 
-//void linkClicked(const QString& url)
-//{
-//    QMessageBox::information(ui, "lol", url);
-//}
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::btnRefreshClicked()
+{
+    ui->webView->setPage(new GikopoiWebPage());
+}
+
+//void MainWindow::checkMessageMaxLength()
+//{
+//    if (ui->txtMessageInput->toPlainText().length() > 500)
+//    {
+//        QString tmp = ui->txtMessageInput->toPlainText();
+//        tmp.truncate(500);
+//        ui->txtMessageInput->setPlainText(tmp);
+//        ui->txtMessageInput->moveCursor(QTextCursor::EndOfBlock, QTextCursor::MoveAnchor);
+//    }
+//}

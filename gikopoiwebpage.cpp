@@ -2,7 +2,6 @@
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QDebug>
-//#include <QDesktopServices>
 
 GikopoiWebPage::GikopoiWebPage(QObject *parent) :
     QWebPage(parent)

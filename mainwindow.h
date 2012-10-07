@@ -31,6 +31,8 @@ private slots:
     void toggleAfk(bool b);
     void doKeepalive();
     void togliBlank(bool ok);
+    void btnRefreshClicked();
+//    void checkMessageMaxLength();
 };
 
 #endif // MAINWINDOW_H
