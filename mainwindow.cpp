@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QtWebKit>
-#include <windows.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
