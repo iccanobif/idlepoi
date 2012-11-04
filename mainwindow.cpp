@@ -20,11 +20,22 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
     connect(ui->txtMessageInput,SIGNAL(messageToSend(QString)), this, SLOT(sendMessage(QString)));
+    connect(ui->btnZoomIn, SIGNAL(clicked()), this, SLOT(btnZoomInClicked()));
+    connect(ui->btnZoomOut, SIGNAL(clicked()), this, SLOT(btnZoomOutClicked()));
 
     ui->btnRefresh->hide();
     ui->btnToggleKeepalive->hide();
+    ui->txtMessageInput->hide();
+    ui->statusBar->hide();
+
+    applicationSettings = new QSettings("iccanobif", "idlepoi");
 
     ui->webView->setPage(new GikopoiWebPage());
+
+    QVariant zoomFactor = applicationSettings->value("zoomFactor");
+
+    if (!zoomFactor.isNull())
+        ui->webView->setZoomFactor(zoomFactor.toReal());
 
     toggleKeepalive(true);
 }
@@ -95,3 +106,17 @@ void MainWindow::btnRefreshClicked()
     ui->webView->setPage(new GikopoiWebPage());
 }
 
+
+void MainWindow::btnZoomInClicked()
+{
+    qreal newZoomFactor = ui->webView->zoomFactor() * 1.1;
+    ui->webView->setZoomFactor(newZoomFactor);
+    applicationSettings->setValue("zoomFactor", newZoomFactor);
+}
+
+void MainWindow::btnZoomOutClicked()
+{
+    qreal newZoomFactor = ui->webView->zoomFactor() * 0.9;
+    ui->webView->setZoomFactor(newZoomFactor);
+    applicationSettings->setValue("zoomFactor", newZoomFactor);
+}

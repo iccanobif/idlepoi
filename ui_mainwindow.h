@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 7. Oct 20:44:34 2012
+** Created: Sun 4. Nov 18:23:31 2012
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,14 +35,16 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QWebView *webView;
-    MessageBox *txtMessageInput;
     QHBoxLayout *hboxLayout;
     QPushButton *btnToggleKeepalive;
     QPushButton *btnToggleAfk;
     QLabel *label;
     QLineEdit *txtAfkMessage;
     QSpacerItem *horizontalSpacer;
+    QPushButton *btnZoomIn;
+    QPushButton *btnZoomOut;
     QPushButton *btnRefresh;
+    MessageBox *txtMessageInput;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -50,6 +52,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(953, 738);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -58,15 +65,15 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         webView = new QWebView(centralWidget);
         webView->setObjectName(QString::fromUtf8("webView"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
+        webView->setSizePolicy(sizePolicy1);
         webView->setMinimumSize(QSize(680, 620));
         webView->setUrl(QUrl(QString::fromUtf8("about:blank")));
 
-        gridLayout->addWidget(webView, 1, 0, 1, 1);
-
-        txtMessageInput = new MessageBox(centralWidget);
-        txtMessageInput->setObjectName(QString::fromUtf8("txtMessageInput"));
-
-        gridLayout->addWidget(txtMessageInput, 1, 1, 1, 1);
+        gridLayout->addWidget(webView, 2, 0, 1, 1);
 
         hboxLayout = new QHBoxLayout();
         hboxLayout->setSpacing(6);
@@ -100,13 +107,32 @@ public:
 
         hboxLayout->addItem(horizontalSpacer);
 
+        btnZoomIn = new QPushButton(centralWidget);
+        btnZoomIn->setObjectName(QString::fromUtf8("btnZoomIn"));
+
+        hboxLayout->addWidget(btnZoomIn);
+
+        btnZoomOut = new QPushButton(centralWidget);
+        btnZoomOut->setObjectName(QString::fromUtf8("btnZoomOut"));
+        btnZoomOut->setMinimumSize(QSize(63, 0));
+        btnZoomOut->setMaximumSize(QSize(16777215, 16777215));
+
+        hboxLayout->addWidget(btnZoomOut);
+
         btnRefresh = new QPushButton(centralWidget);
         btnRefresh->setObjectName(QString::fromUtf8("btnRefresh"));
 
         hboxLayout->addWidget(btnRefresh);
 
 
-        gridLayout->addLayout(hboxLayout, 0, 0, 1, 2);
+        gridLayout->addLayout(hboxLayout, 0, 0, 1, 3);
+
+        txtMessageInput = new MessageBox(centralWidget);
+        txtMessageInput->setObjectName(QString::fromUtf8("txtMessageInput"));
+        sizePolicy.setHeightForWidth(txtMessageInput->sizePolicy().hasHeightForWidth());
+        txtMessageInput->setSizePolicy(sizePolicy);
+
+        gridLayout->addWidget(txtMessageInput, 2, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
@@ -125,6 +151,8 @@ public:
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
         txtAfkMessage->setText(QApplication::translate("MainWindow", "afk", 0, QApplication::UnicodeUTF8));
+        btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
+        btnZoomOut->setText(QApplication::translate("MainWindow", "-", 0, QApplication::UnicodeUTF8));
         btnRefresh->setText(QApplication::translate("MainWindow", "Refresh", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

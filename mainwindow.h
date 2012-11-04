@@ -21,6 +21,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QTimer* timer;
+    QSettings* applicationSettings;
 
     void clickInPage(int x, int y);
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
@@ -32,6 +33,8 @@ private slots:
     void doKeepalive();
     void togliBlank(bool ok);
     void btnRefreshClicked();
+    void btnZoomInClicked();
+    void btnZoomOutClicked();
 };
 
 #endif // MAINWINDOW_H
