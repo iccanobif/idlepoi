@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QtWebKit>
-
+#include <QMainWindow>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,13 +19,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnToggleAfk, SIGNAL(toggled(bool)), this, SLOT(toggleAfk(bool)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(togliBlank(bool)));
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
-    connect(ui->txtMessageInput,SIGNAL(messageToSend(QString)), this, SLOT(sendMessage(QString)));
     connect(ui->btnZoomIn, SIGNAL(clicked()), this, SLOT(btnZoomInClicked()));
     connect(ui->btnZoomOut, SIGNAL(clicked()), this, SLOT(btnZoomOutClicked()));
 
     ui->btnRefresh->hide();
     ui->btnToggleKeepalive->hide();
-    ui->txtMessageInput->hide();
     ui->statusBar->hide();
 
     applicationSettings = new QSettings("iccanobif", "idlepoi");

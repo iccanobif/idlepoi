@@ -2,12 +2,13 @@
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QDebug>
+#include <QStandardPaths>
 
 GikopoiWebPage::GikopoiWebPage(QObject *parent) :
     QWebPage(parent)
 {
     diskCache = new QNetworkDiskCache();
-    diskCache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + "/gikopoiClientCache");
+    diskCache->setCacheDirectory(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/gikopoiClientCache");
 
     accessManager = new QNetworkAccessManager();
     accessManager->setCache(diskCache);
