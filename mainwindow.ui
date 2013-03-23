@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
+    <width>953</width>
     <height>738</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0" colspan="2">
+    <item row="0" column="0" colspan="3">
      <layout class="QHBoxLayout">
       <item>
        <widget class="QPushButton" name="btnToggleKeepalive">
@@ -138,6 +138,16 @@
       </item>
      </layout>
     </item>
+    <item row="2" column="1">
+     <widget class="MessageBox" name="txtMessageInput">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -147,7 +157,12 @@
   <customwidget>
    <class>QWebView</class>
    <extends>QWidget</extends>
-   <header>QtWebKitWidgets/QWebView</header>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+  <customwidget>
+   <class>MessageBox</class>
+   <extends>QPlainTextEdit</extends>
+   <header location="global">messagebox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
