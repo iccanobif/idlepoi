@@ -21,8 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(doKeepalive()));
     connect(ui->btnZoomIn, SIGNAL(clicked()), this, SLOT(btnZoomInClicked()));
     connect(ui->btnZoomOut, SIGNAL(clicked()), this, SLOT(btnZoomOutClicked()));
+    connect(ui->btnRula, SIGNAL(clicked()), this, SLOT(btnRulaClicked()));
+    connect(ui->btnList, SIGNAL(clicked()), this, SLOT(btnListClicked()));
 
-    ui->btnRefresh->hide();
     ui->btnToggleKeepalive->hide();
     ui->statusBar->hide();
 
@@ -99,22 +100,26 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::btnRefreshClicked()
-{
-    ui->webView->setPage(new GikopoiWebPage());
-}
-
-
 void MainWindow::btnZoomInClicked()
 {
-    qreal newZoomFactor = ui->webView->zoomFactor() * 1.1;
+    qreal newZoomFactor = ui->webView->zoomFactor() * 1.05;
     ui->webView->setZoomFactor(newZoomFactor);
     applicationSettings->setValue("zoomFactor", newZoomFactor);
 }
 
 void MainWindow::btnZoomOutClicked()
 {
-    qreal newZoomFactor = ui->webView->zoomFactor() * 0.9;
+    qreal newZoomFactor = ui->webView->zoomFactor() * 0.95;
     ui->webView->setZoomFactor(newZoomFactor);
     applicationSettings->setValue("zoomFactor", newZoomFactor);
+}
+
+void MainWindow::btnRulaClicked()
+{
+    sendMessage("#rula");
+}
+
+void MainWindow::btnListClicked()
+{
+    sendMessage("#list");
 }

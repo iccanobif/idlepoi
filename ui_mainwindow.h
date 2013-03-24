@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 24. Mar 02:00:12 2013
+** Created: Sun 24. Mar 21:58:09 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -39,9 +39,10 @@ public:
     QLabel *label;
     QLineEdit *txtAfkMessage;
     QSpacerItem *horizontalSpacer;
+    QPushButton *btnRula;
+    QPushButton *btnList;
     QPushButton *btnZoomIn;
     QPushButton *btnZoomOut;
-    QPushButton *btnRefresh;
     QWebView *webView;
     QStatusBar *statusBar;
 
@@ -93,6 +94,16 @@ public:
 
         hboxLayout->addItem(horizontalSpacer);
 
+        btnRula = new QPushButton(centralWidget);
+        btnRula->setObjectName(QString::fromUtf8("btnRula"));
+
+        hboxLayout->addWidget(btnRula);
+
+        btnList = new QPushButton(centralWidget);
+        btnList->setObjectName(QString::fromUtf8("btnList"));
+
+        hboxLayout->addWidget(btnList);
+
         btnZoomIn = new QPushButton(centralWidget);
         btnZoomIn->setObjectName(QString::fromUtf8("btnZoomIn"));
 
@@ -104,11 +115,6 @@ public:
         btnZoomOut->setMaximumSize(QSize(16777215, 16777215));
 
         hboxLayout->addWidget(btnZoomOut);
-
-        btnRefresh = new QPushButton(centralWidget);
-        btnRefresh->setObjectName(QString::fromUtf8("btnRefresh"));
-
-        hboxLayout->addWidget(btnRefresh);
 
 
         gridLayout->addLayout(hboxLayout, 0, 0, 1, 2);
@@ -142,9 +148,10 @@ public:
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
         txtAfkMessage->setText(QApplication::translate("MainWindow", "afk", 0, QApplication::UnicodeUTF8));
+        btnRula->setText(QApplication::translate("MainWindow", "#rula", 0, QApplication::UnicodeUTF8));
+        btnList->setText(QApplication::translate("MainWindow", "#list", 0, QApplication::UnicodeUTF8));
         btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
         btnZoomOut->setText(QApplication::translate("MainWindow", "-", 0, QApplication::UnicodeUTF8));
-        btnRefresh->setText(QApplication::translate("MainWindow", "Refresh", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

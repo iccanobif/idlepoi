@@ -32,9 +32,10 @@ private slots:
     void toggleAfk(bool b);
     void doKeepalive();
     void togliBlank(bool ok);
-    void btnRefreshClicked();
     void btnZoomInClicked();
     void btnZoomOutClicked();
+    void btnRulaClicked();
+    void btnListClicked();
 };
 
 #endif // MAINWINDOW_H
