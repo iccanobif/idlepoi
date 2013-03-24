@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 4. Nov 18:23:31 2012
-**      by: Qt User Interface Compiler version 4.8.2
+** Created: Sun 24. Mar 02:00:12 2013
+**      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -25,7 +25,6 @@
 #include <QtGui/QStatusBar>
 #include <QtGui/QWidget>
 #include <QtWebKit/QWebView>
-#include <messagebox.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -34,7 +33,6 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QWebView *webView;
     QHBoxLayout *hboxLayout;
     QPushButton *btnToggleKeepalive;
     QPushButton *btnToggleAfk;
@@ -44,7 +42,7 @@ public:
     QPushButton *btnZoomIn;
     QPushButton *btnZoomOut;
     QPushButton *btnRefresh;
-    MessageBox *txtMessageInput;
+    QWebView *webView;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -63,18 +61,6 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        webView = new QWebView(centralWidget);
-        webView->setObjectName(QString::fromUtf8("webView"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
-        webView->setSizePolicy(sizePolicy1);
-        webView->setMinimumSize(QSize(680, 620));
-        webView->setUrl(QUrl(QString::fromUtf8("about:blank")));
-
-        gridLayout->addWidget(webView, 2, 0, 1, 1);
-
         hboxLayout = new QHBoxLayout();
         hboxLayout->setSpacing(6);
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
@@ -125,14 +111,19 @@ public:
         hboxLayout->addWidget(btnRefresh);
 
 
-        gridLayout->addLayout(hboxLayout, 0, 0, 1, 3);
+        gridLayout->addLayout(hboxLayout, 0, 0, 1, 2);
 
-        txtMessageInput = new MessageBox(centralWidget);
-        txtMessageInput->setObjectName(QString::fromUtf8("txtMessageInput"));
-        sizePolicy.setHeightForWidth(txtMessageInput->sizePolicy().hasHeightForWidth());
-        txtMessageInput->setSizePolicy(sizePolicy);
+        webView = new QWebView(centralWidget);
+        webView->setObjectName(QString::fromUtf8("webView"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
+        webView->setSizePolicy(sizePolicy1);
+        webView->setMinimumSize(QSize(680, 620));
+        webView->setUrl(QUrl(QString::fromUtf8("about:blank")));
 
-        gridLayout->addWidget(txtMessageInput, 2, 1, 1, 1);
+        gridLayout->addWidget(webView, 2, 0, 1, 2);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);

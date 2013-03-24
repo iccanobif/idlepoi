@@ -12,12 +12,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    gikopoiwebpage.cpp \
-    messagebox.cpp
+    gikopoiwebpage.cpp
 
 HEADERS  += mainwindow.h \
-    gikopoiwebpage.h \
-    messagebox.h
+    gikopoiwebpage.h
 
 FORMS    += mainwindow.ui
 
