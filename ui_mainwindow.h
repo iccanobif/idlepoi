@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 24. Mar 21:58:09 2013
+** Created: Sun 19. May 20:33:52 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -147,7 +147,7 @@ public:
         btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0, QApplication::UnicodeUTF8));
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
-        txtAfkMessage->setText(QApplication::translate("MainWindow", "afk", 0, QApplication::UnicodeUTF8));
+        txtAfkMessage->setText(QString());
         btnRula->setText(QApplication::translate("MainWindow", "#rula", 0, QApplication::UnicodeUTF8));
         btnList->setText(QApplication::translate("MainWindow", "#list", 0, QApplication::UnicodeUTF8));
         btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
