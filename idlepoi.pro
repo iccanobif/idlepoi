@@ -19,3 +19,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
+RC_FILE = idlepoi.rc
+
+OTHER_FILES += \
+    idlepoi.rc
