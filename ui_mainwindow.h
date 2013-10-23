@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed 23. Oct 19:55:04 2013
+** Created: Thu 24. Oct 00:27:10 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -143,7 +143,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.0", 0, QApplication::UnicodeUTF8));
         btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0, QApplication::UnicodeUTF8));
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
