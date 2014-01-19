@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu 24. Oct 00:27:10 2013
+** Created: Sun 19. Jan 14:10:30 2014
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,9 +38,12 @@ public:
     QPushButton *btnToggleAfk;
     QLabel *label;
     QLineEdit *txtAfkMessage;
+    QLabel *label_2;
+    QLabel *LblTimeLeft;
     QSpacerItem *horizontalSpacer;
     QPushButton *btnRula;
     QPushButton *btnList;
+    QPushButton *btnMove;
     QPushButton *btnZoomIn;
     QPushButton *btnZoomOut;
     QWebView *webView;
@@ -75,6 +78,7 @@ public:
         btnToggleAfk = new QPushButton(centralWidget);
         btnToggleAfk->setObjectName(QString::fromUtf8("btnToggleAfk"));
         btnToggleAfk->setEnabled(false);
+        btnToggleAfk->setMaximumSize(QSize(50, 16777215));
         btnToggleAfk->setCheckable(true);
 
         hboxLayout->addWidget(btnToggleAfk);
@@ -90,29 +94,55 @@ public:
 
         hboxLayout->addWidget(txtAfkMessage);
 
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        hboxLayout->addWidget(label_2);
+
+        LblTimeLeft = new QLabel(centralWidget);
+        LblTimeLeft->setObjectName(QString::fromUtf8("LblTimeLeft"));
+
+        hboxLayout->addWidget(LblTimeLeft);
+
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         hboxLayout->addItem(horizontalSpacer);
 
         btnRula = new QPushButton(centralWidget);
         btnRula->setObjectName(QString::fromUtf8("btnRula"));
+        btnRula->setEnabled(true);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(btnRula->sizePolicy().hasHeightForWidth());
+        btnRula->setSizePolicy(sizePolicy1);
+        btnRula->setMaximumSize(QSize(50, 16777215));
+        btnRula->setBaseSize(QSize(30, 0));
 
         hboxLayout->addWidget(btnRula);
 
         btnList = new QPushButton(centralWidget);
         btnList->setObjectName(QString::fromUtf8("btnList"));
+        btnList->setMaximumSize(QSize(50, 16777215));
 
         hboxLayout->addWidget(btnList);
 
+        btnMove = new QPushButton(centralWidget);
+        btnMove->setObjectName(QString::fromUtf8("btnMove"));
+        btnMove->setMaximumSize(QSize(50, 16777215));
+
+        hboxLayout->addWidget(btnMove);
+
         btnZoomIn = new QPushButton(centralWidget);
         btnZoomIn->setObjectName(QString::fromUtf8("btnZoomIn"));
+        btnZoomIn->setMaximumSize(QSize(50, 16777215));
 
         hboxLayout->addWidget(btnZoomIn);
 
         btnZoomOut = new QPushButton(centralWidget);
         btnZoomOut->setObjectName(QString::fromUtf8("btnZoomOut"));
         btnZoomOut->setMinimumSize(QSize(63, 0));
-        btnZoomOut->setMaximumSize(QSize(16777215, 16777215));
+        btnZoomOut->setMaximumSize(QSize(50, 16777215));
 
         hboxLayout->addWidget(btnZoomOut);
 
@@ -121,11 +151,11 @@ public:
 
         webView = new QWebView(centralWidget);
         webView->setObjectName(QString::fromUtf8("webView"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
-        webView->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
+        webView->setSizePolicy(sizePolicy2);
         webView->setMinimumSize(QSize(680, 620));
         webView->setUrl(QUrl(QString::fromUtf8("about:blank")));
 
@@ -143,13 +173,16 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.0", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.1", 0, QApplication::UnicodeUTF8));
         btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0, QApplication::UnicodeUTF8));
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
         txtAfkMessage->setText(QString());
+        label_2->setText(QApplication::translate("MainWindow", "Time until keepalive msg:", 0, QApplication::UnicodeUTF8));
+        LblTimeLeft->setText(QApplication::translate("MainWindow", "TextLabel", 0, QApplication::UnicodeUTF8));
         btnRula->setText(QApplication::translate("MainWindow", "#rula", 0, QApplication::UnicodeUTF8));
         btnList->setText(QApplication::translate("MainWindow", "#list", 0, QApplication::UnicodeUTF8));
+        btnMove->setText(QApplication::translate("MainWindow", "#move", 0, QApplication::UnicodeUTF8));
         btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
         btnZoomOut->setText(QApplication::translate("MainWindow", "-", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

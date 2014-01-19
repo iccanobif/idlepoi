@@ -6,6 +6,7 @@
 #include <QInputDialog>
 #include <QtWebKit>
 
+#define KEEPALIVE_SECONDS 600 //10 minutes
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnZoomOut, SIGNAL(clicked()), this, SLOT(btnZoomOutClicked()));
     connect(ui->btnRula, SIGNAL(clicked()), this, SLOT(btnRulaClicked()));
     connect(ui->btnList, SIGNAL(clicked()), this, SLOT(btnListClicked()));
+    connect(ui->btnMove, SIGNAL(clicked()), this, SLOT(btnMoveClicked()));
 
     ui->btnToggleKeepalive->hide();
     ui->statusBar->hide();
@@ -39,8 +41,27 @@ MainWindow::MainWindow(QWidget *parent) :
     toggleKeepalive(true);
 }
 
+void MainWindow::updateTimerLabel()
+{
+    QString txt = QString::number(secondsLeft / 60) + ":" + QString("%1").arg(secondsLeft % 60, 2, 10, QChar('0'));
+
+    ui->LblTimeLeft->setText(txt);
+
+    if (secondsLeft <= 10)
+        ui->LblTimeLeft->setStyleSheet("QLabel {color: red; }");
+    else
+        ui->LblTimeLeft->setStyleSheet("");
+}
+
 void MainWindow::doKeepalive()
 {
+    updateTimerLabel();
+
+    if (secondsLeft-- > 0)
+        return;
+
+    secondsLeft = KEEPALIVE_SECONDS;
+
     if (ui->btnToggleAfk->isChecked())
         sendMessage(ui->txtAfkMessage->text());
     else
@@ -70,9 +91,13 @@ void MainWindow::toggleKeepalive(bool b)
 
     if (b)
     {
+        secondsLeft = KEEPALIVE_SECONDS;
+
         ui->btnToggleKeepalive->setText("Stop keepalive");
-        timer->setInterval(10 * 60 * 1000); //10 minutes
+        timer->setInterval(1000); //1 second
         timer->start();
+
+        doKeepalive();
     }
     else
     {
@@ -122,4 +147,9 @@ void MainWindow::btnRulaClicked()
 void MainWindow::btnListClicked()
 {
     sendMessage("#list");
+}
+
+void MainWindow::btnMoveClicked()
+{
+    sendMessage("#move");
 }

@@ -22,9 +22,10 @@ private:
     Ui::MainWindow *ui;
     QTimer* timer;
     QSettings* applicationSettings;
+    int secondsLeft;
 
-    void clickInPage(int x, int y);
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
+    void updateTimerLabel();
 
 private slots:
     void sendMessage(const QString& msg);
@@ -36,6 +37,7 @@ private slots:
     void btnZoomOutClicked();
     void btnRulaClicked();
     void btnListClicked();
+    void btnMoveClicked();
 };
 
 #endif // MAINWINDOW_H
