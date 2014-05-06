@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 19. Jan 14:10:30 2014
+** Created: Tue 6. May 22:59:59 2014
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,6 +40,7 @@ public:
     QLineEdit *txtAfkMessage;
     QLabel *label_2;
     QLabel *LblTimeLeft;
+    QPushButton *btnSkipKeepalive;
     QSpacerItem *horizontalSpacer;
     QPushButton *btnRula;
     QPushButton *btnList;
@@ -103,6 +104,12 @@ public:
         LblTimeLeft->setObjectName(QString::fromUtf8("LblTimeLeft"));
 
         hboxLayout->addWidget(LblTimeLeft);
+
+        btnSkipKeepalive = new QPushButton(centralWidget);
+        btnSkipKeepalive->setObjectName(QString::fromUtf8("btnSkipKeepalive"));
+        btnSkipKeepalive->setMaximumSize(QSize(40, 16777215));
+
+        hboxLayout->addWidget(btnSkipKeepalive);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -173,13 +180,14 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.1", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.2", 0, QApplication::UnicodeUTF8));
         btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0, QApplication::UnicodeUTF8));
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
         txtAfkMessage->setText(QString());
         label_2->setText(QApplication::translate("MainWindow", "Time until keepalive msg:", 0, QApplication::UnicodeUTF8));
         LblTimeLeft->setText(QApplication::translate("MainWindow", "TextLabel", 0, QApplication::UnicodeUTF8));
+        btnSkipKeepalive->setText(QApplication::translate("MainWindow", "Skip", 0, QApplication::UnicodeUTF8));
         btnRula->setText(QApplication::translate("MainWindow", "#rula", 0, QApplication::UnicodeUTF8));
         btnList->setText(QApplication::translate("MainWindow", "#list", 0, QApplication::UnicodeUTF8));
         btnMove->setText(QApplication::translate("MainWindow", "#move", 0, QApplication::UnicodeUTF8));

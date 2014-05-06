@@ -6,7 +6,7 @@
 #include <QInputDialog>
 #include <QtWebKit>
 
-#define KEEPALIVE_SECONDS 600 //10 minutes
+#define DEFAULT_KEEPALIVE_DELAY 600 //10 minutes
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,11 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btnRula, SIGNAL(clicked()), this, SLOT(btnRulaClicked()));
     connect(ui->btnList, SIGNAL(clicked()), this, SLOT(btnListClicked()));
     connect(ui->btnMove, SIGNAL(clicked()), this, SLOT(btnMoveClicked()));
+    connect(ui->btnSkipKeepalive, SIGNAL(clicked()), this, SLOT(btnSkipClicked()));
 
     ui->btnToggleKeepalive->hide();
     ui->statusBar->hide();
 
-    applicationSettings = new QSettings("iccanobif", "idlepoi");
+//    applicationSettings = new QSettings("iccanobif", "idlepoi");
+    applicationSettings = new QSettings("idlepoi.ini", QSettings::IniFormat);
 
     ui->webView->setPage(new GikopoiWebPage());
 
@@ -37,6 +39,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (!zoomFactor.isNull())
         ui->webView->setZoomFactor(zoomFactor.toReal());
+
+    QVariant keepAliveDelay = applicationSettings->value("keepAliveDelay");
+
+    if (!keepAliveDelay.isNull())
+        this->keepAliveDelay = keepAliveDelay.toInt();
+    else
+    {
+        applicationSettings->setValue("keepAliveDelay", DEFAULT_KEEPALIVE_DELAY);
+        this->keepAliveDelay = DEFAULT_KEEPALIVE_DELAY;
+    }
 
     toggleKeepalive(true);
 }
@@ -60,7 +72,7 @@ void MainWindow::doKeepalive()
     if (secondsLeft-- > 0)
         return;
 
-    secondsLeft = KEEPALIVE_SECONDS;
+    secondsLeft = this->keepAliveDelay;
 
     if (ui->btnToggleAfk->isChecked())
         sendMessage(ui->txtAfkMessage->text());
@@ -91,7 +103,7 @@ void MainWindow::toggleKeepalive(bool b)
 
     if (b)
     {
-        secondsLeft = KEEPALIVE_SECONDS;
+        secondsLeft = this->keepAliveDelay;
 
         ui->btnToggleKeepalive->setText("Stop keepalive");
         timer->setInterval(1000); //1 second
@@ -152,4 +164,11 @@ void MainWindow::btnListClicked()
 void MainWindow::btnMoveClicked()
 {
     sendMessage("#move");
+}
+
+void MainWindow::btnSkipClicked()
+{
+    //I know, this is a pretty lazy way to do it, I'll figure out something better, sometime...
+    toggleKeepalive(false);
+    toggleKeepalive(true);
 }

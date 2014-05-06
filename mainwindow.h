@@ -23,6 +23,7 @@ private:
     QTimer* timer;
     QSettings* applicationSettings;
     int secondsLeft;
+    int keepAliveDelay; // in seconds
 
     void pressKeyInPage(int key, Qt::KeyboardModifiers keyboardModifiers);
     void updateTimerLabel();
@@ -38,6 +39,7 @@ private slots:
     void btnRulaClicked();
     void btnListClicked();
     void btnMoveClicked();
+    void btnSkipClicked();
 };
 
 #endif // MAINWINDOW_H
