@@ -29,7 +29,12 @@ bool GikopoiWebPage::acceptNavigationRequest(QWebFrame *frame, const QNetworkReq
     if (request.url().toString().contains(regex))
     {
         QString urlToOpen = request.url().toString().replace(regex, "");
-        qDebug() << urlToOpen;
+        //I only replace these 5 HTML entities because they're the only ones that Gikopoi does handle...
+        urlToOpen.replace("&sharp;", "#");
+        urlToOpen.replace("&quot;", "\"");
+        urlToOpen.replace("&apos;", "'");
+        urlToOpen.replace("&gt;", ">");
+        urlToOpen.replace("&lt;", "<");
         QDesktopServices::openUrl(QUrl(urlToOpen));
     }
 
