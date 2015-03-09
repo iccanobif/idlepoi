@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+VERSION = 1.0.3
+
 QT       += core gui webkit network
 
 TARGET = idlepoi
