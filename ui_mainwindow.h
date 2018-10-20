@@ -181,7 +181,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.3", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.4", 0));
         btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0));
         btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0));
         label->setText(QApplication::translate("MainWindow", "Afk message:", 0));
