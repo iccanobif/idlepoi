@@ -1,12 +1,7 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2012-02-12T21:23:28
-#
-#-------------------------------------------------
 
-VERSION = 1.0.3
+VERSION = 1.0.4
 
-QT       += core gui webkit network
+QT       += core gui webkit network widgets webkitwidgets
 
 TARGET = idlepoi
 TEMPLATE = app

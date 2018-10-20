@@ -11,20 +11,21 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QMainWindow>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QStatusBar>
-#include <QtGui/QWidget>
-#include <QtWebKit/QWebView>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMainWindow>
+#include <QPushButton>
+#include <QSpacerItem>
+#include <QStatusBar>
+#include <QWidget>
+#include <QtWebKit>
+#include <QWebView>
 
 QT_BEGIN_NAMESPACE
 
@@ -180,19 +181,19 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.3", 0, QApplication::UnicodeUTF8));
-        btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0, QApplication::UnicodeUTF8));
-        btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "Afk message:", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "idlepoi 1.0.3", 0));
+        btnToggleKeepalive->setText(QApplication::translate("MainWindow", "Start keepalive", 0));
+        btnToggleAfk->setText(QApplication::translate("MainWindow", "Afk", 0));
+        label->setText(QApplication::translate("MainWindow", "Afk message:", 0));
         txtAfkMessage->setText(QString());
-        label_2->setText(QApplication::translate("MainWindow", "Time until keepalive msg:", 0, QApplication::UnicodeUTF8));
-        LblTimeLeft->setText(QApplication::translate("MainWindow", "TextLabel", 0, QApplication::UnicodeUTF8));
-        btnSkipKeepalive->setText(QApplication::translate("MainWindow", "Skip", 0, QApplication::UnicodeUTF8));
-        btnRula->setText(QApplication::translate("MainWindow", "#rula", 0, QApplication::UnicodeUTF8));
-        btnList->setText(QApplication::translate("MainWindow", "#list", 0, QApplication::UnicodeUTF8));
-        btnMove->setText(QApplication::translate("MainWindow", "#move", 0, QApplication::UnicodeUTF8));
-        btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
-        btnZoomOut->setText(QApplication::translate("MainWindow", "-", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("MainWindow", "Time until keepalive msg:", 0));
+        LblTimeLeft->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        btnSkipKeepalive->setText(QApplication::translate("MainWindow", "Skip", 0));
+        btnRula->setText(QApplication::translate("MainWindow", "#rula", 0));
+        btnList->setText(QApplication::translate("MainWindow", "#list", 0));
+        btnMove->setText(QApplication::translate("MainWindow", "#move", 0));
+        btnZoomIn->setText(QApplication::translate("MainWindow", "+", 0));
+        btnZoomOut->setText(QApplication::translate("MainWindow", "-", 0));
     } // retranslateUi
 
 };

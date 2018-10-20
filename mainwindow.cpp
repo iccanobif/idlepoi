@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QtWebKit>
+#include <QWebView>
 
 #define DEFAULT_KEEPALIVE_DELAY 600 //10 minutes
 

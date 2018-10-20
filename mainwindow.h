@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QtGui>
+// #include <QtGui>
+#include <QSettings>
 #include "gikopoiwebpage.h"
 
 namespace Ui {
